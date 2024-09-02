@@ -131,6 +131,7 @@ public class ServerPreparedQuery extends ClientPreparedQuery {
             // 4.1.1 and newer use the first byte as an 'ok' or 'error' flag, so move the buffer pointer past it to start reading the statement id.
             prepareResultPacket.setPosition(1);
 
+            // 预编译后的serverStatementId
             this.serverStatementId = prepareResultPacket.readInteger(IntegerDataType.INT4);
             int fieldCount = (int) prepareResultPacket.readInteger(IntegerDataType.INT2);
             setParameterCount((int) prepareResultPacket.readInteger(IntegerDataType.INT2));
